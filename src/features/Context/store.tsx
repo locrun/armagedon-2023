@@ -43,9 +43,6 @@ const GlobalContext = createContext<ContextProps>({
 })
 
 export const GlobalContextProvider = ({ children }: LayoutProps) => {
-  const [dataFromServer, setDataFromServer] = useState<ResponseData | null>(
-    null
-  )
   const [distanceOption, setDistanceOption] = useState('distancesInKm')
   const [cartItems, setCartItems] = useState<AsteroidData[]>([])
   const [cartItemId, setCartItemId] = useState<string[]>([])
@@ -61,7 +58,7 @@ export const GlobalContextProvider = ({ children }: LayoutProps) => {
       return cartItemId.includes(asteroid.id)
     })
     setCartItems(filtered)
-  }, [asteroidData, cartItemId, dataFromServer])
+  }, [asteroidData, cartItemId])
 
   return (
     <GlobalContext.Provider
