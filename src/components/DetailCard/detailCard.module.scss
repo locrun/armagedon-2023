@@ -1,1 +1,33 @@
 @use '/src/styles/index.scss' as *;
+
+.flex {
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+}
+.title {
+  margin-bottom: 20px;
+}
+.detail {
+  margin-right: 70px;
+}
+
+.listApproachesWrapper {
+  width: 360px;
+  margin-left: 60px;
+}
+.listApproaches {
+  max-height: 600px;
+  overflow-x: hidden;
+}
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+.item {
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.5px;
+}

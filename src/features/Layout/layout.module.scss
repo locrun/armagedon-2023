@@ -21,7 +21,7 @@
 
 .content:after {
   display: block;
-  content: url('/assets/planeta_zemli.jpg');
+  content: url('/assets/planeta_desktop.svg');
   position: absolute;
   left: -250px;
   z-index: -1;
@@ -38,5 +38,13 @@
   @media (min-width: 1160px) {
     display: block;
     left: 0;
+  }
+  @media (min-width: 2000px) {
+    display: block;
+    content: url('/assets/planeta_full.svg');
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    position: fixed;
   }
 }

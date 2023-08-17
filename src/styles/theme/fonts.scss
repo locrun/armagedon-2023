@@ -6,4 +6,15 @@ $fw-bold: 700;
 $fw-extrabold: 800;
 
 $PassionOne: Passion One, sans-serif;
-$Lato: Lato, sans-serif;
+$HelveticaRegular: HelveticaRegular, sans-serif;
+
+@font-face {
+  font-family: HelveticaRegular;
+  src: url('../fonts/HelveticaRegular.woff') format('woff');
+  font-weight: 400;
+}
+@font-face {
+  font-family: HelveticaBold;
+  src: url('../fonts/HelveticaBold.woff') format('woff');
+  font-weight: 700;
+}
