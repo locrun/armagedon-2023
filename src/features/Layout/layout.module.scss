@@ -1,0 +1,42 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.content {
+  max-width: 1025px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  position: static;
+  @media (min-width: 875px) {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.content:after {
+  display: block;
+  content: url('/assets/planeta_zemli.jpg');
+  position: absolute;
+  left: -250px;
+  z-index: -1;
+  position: fixed;
+  @media (min-width: 500px) {
+    display: block;
+    left: -150px;
+  }
+  @media (min-width: 1055px) {
+    display: block;
+    left: -90px;
+  }
+
+  @media (min-width: 1160px) {
+    display: block;
+    left: 0;
+  }
+}

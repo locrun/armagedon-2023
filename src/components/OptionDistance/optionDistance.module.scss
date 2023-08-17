@@ -1,0 +1,56 @@
+.options {
+  width: 224px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  @media (min-width: 660px) {
+    width: 93%;
+  }
+}
+.options:after {
+  display: block;
+  content: '|';
+  position: absolute;
+  left: 50%;
+  transform: translate(-16px, -1px);
+  @media (min-width: 660px) {
+    transform: translate(-20px, -1px);
+  }
+}
+.button {
+  padding: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+  @media (min-width: 660px) {
+    font-size: 14px;
+  }
+}
+
+.active {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  position: relative;
+  letter-spacing: 1px;
+  @media (min-width: 660px) {
+    font-size: 14px;
+  }
+}
+
+.active:after {
+  display: block;
+  content: '';
+  width: 100%;
+  position: absolute;
+  bottom: 3px;
+  border-bottom: 1px solid white;
+}

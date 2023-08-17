@@ -1,0 +1,50 @@
+@use '/src/styles/index.scss' as *;
+
+.basket {
+  max-width: 150px;
+  height: 100%;
+  margin-left: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #232526;
+  border-radius: 24px;
+
+  @media (min-width: 875px) {
+    position: fixed;
+    height: auto;
+    right: 30%;
+    transform: translate(30px, -5px);
+  }
+}
+.send {
+  margin-top: 32px;
+  padding: 12px 17px 12px 17px;
+  border-radius: 40px;
+  background: #f86600;
+
+  font-family: $Lato;
+  font-size: 16px;
+  font-weight: $fw-bold;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: white;
+  text-decoration: none;
+}
+
+.title {
+  font-family: $Lato;
+  font-size: 18px;
+  font-weight: $fw-bold;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+.subtitle {
+  margin: 0;
+  font-family: $Lato;
+  font-size: 16px;
+  font-weight: $fw-regular;
+  line-height: 24px;
+  letter-spacing: 0px;
+}

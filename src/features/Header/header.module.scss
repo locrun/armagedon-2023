@@ -1,0 +1,30 @@
+@use '/src/styles/index.scss' as *;
+
+.header {
+  max-width: 300px;
+  padding: 0 15px;
+  margin-bottom: 30px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.title {
+  font-family: $PassionOne;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 35px;
+  letter-spacing: 0px;
+  color: #f86600;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-family: $Lato;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+}
