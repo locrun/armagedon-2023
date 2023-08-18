@@ -4,16 +4,17 @@ import { AsteroidData } from '@/shared/interfaces/interfaces'
 import { extractTextInBrackets } from '@/shared/utils/extractTextInBrackets'
 import { formatDiametr } from '@/shared/utils/formatDiametr'
 import dangerous from '../../../public/assets/dangerous.svg'
-import s from './detailCard.module.scss'
-import { spawn } from 'child_process'
+
 import { formatDate } from '@/shared/utils/formatDate'
 import { formatDistance } from '@/shared/utils/formatDistance'
+
+import s from './asteroidCard.module.scss'
 
 interface DetailCardProps {
   oneAsteroid: AsteroidData
 }
 
-export const DetailCard = ({ oneAsteroid }: DetailCardProps) => {
+export const AsteroidCard = ({ oneAsteroid }: DetailCardProps) => {
   const name = extractTextInBrackets(oneAsteroid?.name)
   const diameter = formatDiametr(
     oneAsteroid?.estimated_diameter?.meters.estimated_diameter_min,

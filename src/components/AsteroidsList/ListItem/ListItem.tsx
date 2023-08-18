@@ -44,7 +44,7 @@ export const ListItem = ({
           )}
         </>
         <div className={s.nameDiameter}>
-          <Link className={s.name} href={`/detail/${id}`}>
+          <Link className={s.name} href={`/asteroid/${id}`}>
             {name}
           </Link>
           <span className={s.diameter}>Ø {diameter} м</span>

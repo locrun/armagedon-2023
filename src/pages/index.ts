@@ -1,5 +1,5 @@
 import { HomePage } from './HomePage/HomePage'
 import { OrderPage } from './OrderPage/OrderPage'
-import { DetailPage } from './DetailPage/DetailPage'
+import { AsteroidPage } from './AsteroidPage/AsteroidPage'
 
-export { HomePage, OrderPage, DetailPage }
+export { HomePage, OrderPage, AsteroidPage }
