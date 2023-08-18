@@ -10,6 +10,7 @@
   background: #232526;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   button {
     margin-top: 0;
@@ -17,11 +18,9 @@
 
   @media (min-width: 875px) {
     max-width: 150px;
-    min-height: 160px;
     max-height: 160px;
-    height: auto;
-    top: 21%;
-    left: 70%;
+    left: 53%;
+    top: 0;
     padding: 16px;
     position: fixed;
     display: flex;
@@ -30,12 +29,7 @@
     align-items: flex-start;
     background: #232526;
     border-radius: 24px;
-  }
-  @media (min-width: 1200px) {
-    left: 67%;
-  }
-  @media (min-width: 1500px) {
-    left: 62%;
+    transform: translate(100%, 100%);
   }
 }
 .send {
