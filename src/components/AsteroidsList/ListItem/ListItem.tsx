@@ -14,6 +14,7 @@ import s from '../asteroidsList.module.scss'
 export const ListItem = ({
   id,
   name,
+  cartItemsId,
   flightDate,
   distancesInKm,
   distancesToMoon,
@@ -22,6 +23,7 @@ export const ListItem = ({
   distanceOption,
   addToCart,
 }: AsteroidProps) => {
+  const isAddedToCart = cartItemsId?.includes(id)
   return (
     <div className={s.item}>
       <h3 className={s.date}>{flightDate}</h3>
@@ -53,7 +55,11 @@ export const ListItem = ({
       <div className={s.btnWrapper}>
         {addToCart && (
           <button className={s.orderBtn} onClick={addToCart}>
-            Заказать
+            {isAddedToCart ? (
+              <span className={s.added}>В корзине</span>
+            ) : (
+              <span>Заказать</span>
+            )}
           </button>
         )}
 

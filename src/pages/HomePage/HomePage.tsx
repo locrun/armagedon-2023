@@ -14,7 +14,7 @@ export const HomePage = () => {
   const date = new Date()
   const start_date = date.toISOString().slice(0, 10)
 
-  const { setAsteroidData, asteroidData, cartItemId } = useGlobalContext()
+  const { setAsteroidData, asteroidData, cartItemsId } = useGlobalContext()
   const [dataFromServer, setDataFromServer] = useState<ResponseData>()
 
   const [count, setCount] = useState<number>(0)
@@ -75,7 +75,7 @@ export const HomePage = () => {
         <AsteroidsList asteroids={newFormattedAsteroidsData} />
         <div ref={ref} className={s.label}></div>
       </div>
-      <Basket itemCount={cartItemId.length} />
+      <Basket itemCount={cartItemsId.length} />
     </>
   )
 }

@@ -74,7 +74,7 @@
   padding: 2px 12px 2px 12px;
   border-radius: 16px;
   background: rgba(248, 102, 0, 0.15);
-  color: rgba(245, 222, 217, 1);
+  color: #f86600;
   font-size: 11px;
   font-weight: $fw-bold;
   line-height: 20px;
@@ -87,7 +87,9 @@
     transition: all 0.3s ease-in-out;
   }
 }
-
+.added {
+  color: #fff;
+}
 .image {
   margin: 0 10px;
 }

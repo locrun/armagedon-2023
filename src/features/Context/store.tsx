@@ -17,8 +17,8 @@ type ContextProps = {
   asteroidData: AsteroidData[]
   setAsteroidData: Dispatch<SetStateAction<AsteroidData[]>>
 
-  cartItemId: string[]
-  setCartItemId?: Dispatch<SetStateAction<string>>
+  cartItemsId: string[]
+  setCartItemsId?: Dispatch<SetStateAction<string>>
 
   distanceOption: string
 
@@ -33,8 +33,8 @@ const GlobalContext = createContext<ContextProps>({
   asteroidData: [],
   setAsteroidData: (): AsteroidData[] => [],
 
-  cartItemId: [],
-  setCartItemId: (): string => '',
+  cartItemsId: [],
+  setCartItemsId: (): string => '',
 
   distanceOption: '',
 
@@ -45,20 +45,20 @@ const GlobalContext = createContext<ContextProps>({
 export const GlobalContextProvider = ({ children }: LayoutProps) => {
   const [distanceOption, setDistanceOption] = useState('distancesInKm')
   const [cartItems, setCartItems] = useState<AsteroidData[]>([])
-  const [cartItemId, setCartItemId] = useState<string[]>([])
+  const [cartItemsId, setCartItemsId] = useState<string[]>([])
   const [asteroidData, setAsteroidData] = useState<AsteroidData[]>([])
 
   const addToCart = (productId: string) => {
-    if (!cartItemId.includes(productId))
-      setCartItemId([...cartItemId, productId])
+    if (!cartItemsId.includes(productId))
+      setCartItemsId([...cartItemsId, productId])
   }
 
   useEffect(() => {
     const filtered = asteroidData?.filter((asteroid: AsteroidData) => {
-      return cartItemId.includes(asteroid.id)
+      return cartItemsId.includes(asteroid.id)
     })
     setCartItems(filtered)
-  }, [asteroidData, cartItemId])
+  }, [asteroidData, cartItemsId])
 
   return (
     <GlobalContext.Provider
@@ -68,7 +68,7 @@ export const GlobalContextProvider = ({ children }: LayoutProps) => {
         distanceOption,
         setDistanceOption,
         addToCart,
-        cartItemId,
+        cartItemsId,
         cartItems,
       }}
     >

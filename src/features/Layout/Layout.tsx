@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
-import { GlobalContextProvider, useGlobalContext } from '../Context/store'
+import { GlobalContextProvider } from '../Context/store'
 import { Header } from '../Header/Header'
+import { Footer } from '../Footer/Footer'
 import s from './layout.module.scss'
 
 export interface LayoutProps {
@@ -14,6 +15,7 @@ export const Layout = ({ children }: LayoutProps) => {
         <div className={s.content}>
           <GlobalContextProvider>{children}</GlobalContextProvider>
         </div>
+        <Footer />
       </div>
     </>
   )

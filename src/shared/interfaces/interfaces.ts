@@ -1,6 +1,7 @@
 type Props = {
   distanceOption?: string
   addToCart?: () => void
+  cartItemsId?: string[]
 }
 
 export interface AsteroidProps extends Props {
