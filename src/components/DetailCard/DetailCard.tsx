@@ -24,10 +24,16 @@ export const DetailCard = ({ oneAsteroid }: DetailCardProps) => {
     <div className={s.flex}>
       <div className={s.detail}>
         <ul className={s.detailList}>
-          <li className={s.item}> Имя: {name}</li>
-          <li className={s.item}>Диаметр: Ø{diameter}</li>
           <li className={s.item}>
-            Абсолютная магнитуда: {oneAsteroid.absolute_magnitude_h}
+            Имя:&nbsp; <span>{name}</span>
+          </li>
+          <li className={s.item}>
+            Диаметр:&nbsp;
+            <span>Ø{diameter}</span>
+          </li>
+          <li className={s.item}>
+            Абсолютная магнитуда:&nbsp;
+            <span>{oneAsteroid.absolute_magnitude_h}</span>
           </li>
           <li>
             {oneAsteroid?.is_potentially_hazardous_asteroid && (
@@ -44,28 +50,30 @@ export const DetailCard = ({ oneAsteroid }: DetailCardProps) => {
               <div key={id} className={s.itemList}>
                 <div className={s.item}>
                   Дата приближения:&nbsp;
-                  {formatDate(item.close_approach_date)}
+                  <span>{formatDate(item.close_approach_date)}</span>
                 </div>
                 <div className={s.item}>
                   Скорость KM в час:&nbsp;
-                  {item.relative_velocity.kilometers_per_hour}
+                  <span>{item.relative_velocity.kilometers_per_hour}</span>
                 </div>
                 <div className={s.item}>
                   Км в секунду:&nbsp;
-                  {item.relative_velocity.kilometers_per_second}
+                  <span>{item.relative_velocity.kilometers_per_second}</span>
                 </div>
                 <div className={s.item}>
                   Миль в час:&nbsp;
-                  {item.relative_velocity.miles_per_hour}
+                  <span> {item.relative_velocity.miles_per_hour}</span>
                 </div>
                 <div className={s.item}>
-                  Вокруг чего летят:&nbsp;
-                  {item.orbiting_body}
+                  Вращается вокруг орбиты:&nbsp;
+                  <span>{item.orbiting_body}</span>
                 </div>
 
-                <div>
+                <div className={s.item}>
                   Расстояние до земли:&nbsp;
-                  {formatDistance(parseInt(item.miss_distance.kilometers))} km
+                  <span>
+                    {formatDistance(parseInt(item.miss_distance.kilometers))} km
+                  </span>
                 </div>
               </div>
             )
