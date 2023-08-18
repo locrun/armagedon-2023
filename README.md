@@ -34,7 +34,7 @@
 Скопируйте проект на компьютер: 
 
 ```
-https://github.com/locrun/armagedon-2023.git
+git clone https://github.com/locrun/armagedon-2023.git
 ```
 Установите зависимости:
 
