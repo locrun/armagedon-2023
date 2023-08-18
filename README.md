@@ -6,6 +6,7 @@
 Для разработки проекта использовались следующие технологии:
 * Next.js
 * TypeScript
+* API NASA Asteroids - NeoWs;
 * Axios
 
 ### [Ссылка на деплой](https://armagedon-2023-seven.vercel.app/)
