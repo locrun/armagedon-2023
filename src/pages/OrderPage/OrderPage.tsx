@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useGlobalContext } from '@/features/Context/store'
 import s from './order.module.scss'
 import { ListItem } from '@/components/AsteroidsList/ListItem/ListItem'

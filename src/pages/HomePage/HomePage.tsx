@@ -18,12 +18,13 @@ export const HomePage = () => {
   const { setAsteroidData, asteroidData, cartItemsId } = useGlobalContext()
   const [dataFromServer, setDataFromServer] = useState<ResponseData>()
   const [counter, setCounter] = useState(0)
-  const [date, setDate] = useState<string>(start_date)
+  const [dateParam, setDateParam] = useState<string>(start_date)
 
-  const scrollHandler = useCallback((e: any) => {
+  const scrollHandler = useCallback((e: Event) => {
     if (
-      e.target.documentElement.scrollHeight -
-        (e.target.documentElement.scrollTop + window.innerHeight) <
+      (e.target as Document).documentElement.scrollHeight -
+        ((e.target as Document).documentElement.scrollTop +
+          window.innerHeight) <
       1
     ) {
       setCounter(prev => (prev += 1))
@@ -42,11 +43,11 @@ export const HomePage = () => {
     const date = new Date()
     date.setDate(date.getDate() + counter)
     const formattedDate = date.toISOString().slice(0, 10)
-    setDate(formattedDate)
+    setDateParam(formattedDate)
   }, [counter])
 
   useEffect(() => {
-    fetchAsteroidList(date, date)
+    fetchAsteroidList(dateParam)
       .then(res => {
         setDataFromServer(res.data)
       })
@@ -58,7 +59,7 @@ export const HomePage = () => {
         }
       })
       .finally()
-  }, [date, setDataFromServer])
+  }, [dateParam, setDataFromServer])
 
   useEffect(() => {
     if (dataFromServer) {
@@ -73,7 +74,12 @@ export const HomePage = () => {
           : -1
       )
 
-      setAsteroidData(prevArr => [...prevArr, ...sortedArray])
+      setAsteroidData(prevArr => [
+        ...prevArr,
+        ...sortedArray.filter(
+          newObj => !prevArr.some(obj => obj.id === newObj.id)
+        ),
+      ])
     }
   }, [dataFromServer, setAsteroidData])
 

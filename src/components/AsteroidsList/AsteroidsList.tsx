@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback } from 'react'
 import { ListItem } from './ListItem/ListItem'
 import { useGlobalContext } from '@/features/Context/store'
 import { AsteroidProps } from '@/shared/interfaces/interfaces'
@@ -18,10 +18,10 @@ export const AsteroidsList = ({ asteroids }: AsteroidsListProps) => {
 
   return (
     <>
-      {asteroids?.map((item: AsteroidProps, id) => {
+      {asteroids?.map((item: AsteroidProps) => {
         return (
           <ListItem
-            key={id}
+            key={item.id}
             {...item}
             cartItemsId={cartItemsId}
             distanceOption={distanceOption}

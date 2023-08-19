@@ -20,7 +20,7 @@ export const AsteroidCard = ({ oneAsteroid }: DetailCardProps) => {
     oneAsteroid?.estimated_diameter?.meters.estimated_diameter_min,
     oneAsteroid?.estimated_diameter?.meters.estimated_diameter_max
   )
-  console.log(oneAsteroid)
+
   return (
     <div className={s.flex}>
       <div className={s.detail}>
