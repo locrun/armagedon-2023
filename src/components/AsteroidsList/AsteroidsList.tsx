@@ -18,10 +18,10 @@ export const AsteroidsList = ({ asteroids }: AsteroidsListProps) => {
 
   return (
     <>
-      {asteroids?.map((item: AsteroidProps) => {
+      {asteroids?.map((item: AsteroidProps, id) => {
         return (
           <ListItem
-            key={item.id}
+            key={id}
             {...item}
             cartItemsId={cartItemsId}
             distanceOption={distanceOption}

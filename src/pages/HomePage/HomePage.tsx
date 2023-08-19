@@ -1,44 +1,55 @@
-import React, { useEffect, useState } from 'react'
-import { useInView } from 'react-intersection-observer'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Basket, AsteroidsList } from '@/components'
 import { OptionDistance } from '@/components/OptionDistance/OptionDistance'
 import { useGlobalContext } from '@/features/Context/store'
 import { fetchAsteroidList } from '@/shared/api/routes/asteroids'
 import { formatAsteroidData } from '@/shared/utils/formatAsteroidData'
 
-import { ResponseData } from '@/shared/interfaces/interfaces'
+import { AsteroidData, ResponseData } from '@/shared/interfaces/interfaces'
 
 import s from './homePage.module.scss'
 
 export const HomePage = () => {
-  const date = new Date()
-  const start_date = date.toISOString().slice(0, 10)
+  const start_date = useMemo(() => {
+    const date = new Date()
+    return date.toISOString().slice(0, 10)
+  }, [])
 
   const { setAsteroidData, asteroidData, cartItemsId } = useGlobalContext()
   const [dataFromServer, setDataFromServer] = useState<ResponseData>()
+  const [counter, setCounter] = useState(0)
+  const [date, setDate] = useState<string>(start_date)
 
-  const [count, setCount] = useState<number>(0)
-  const [startDate] = useState<string>(start_date)
-  const [endDate, setEndDate] = useState<string>(start_date)
+  const scrollHandler = useCallback((e: any) => {
+    if (
+      e.target.documentElement.scrollHeight -
+        (e.target.documentElement.scrollTop + window.innerHeight) <
+      1
+    ) {
+      setCounter(prev => (prev += 1))
+    }
+  }, [])
 
-  const { ref, inView } = useInView({
-    threshold: 0.5,
-  })
+  useEffect(() => {
+    window.addEventListener('scroll', scrollHandler)
+
+    return () => {
+      window.removeEventListener('scroll', scrollHandler)
+    }
+  }, [scrollHandler])
 
   useEffect(() => {
     const date = new Date()
-    date.setDate(date.getDate() + count)
+    date.setDate(date.getDate() + counter)
     const formattedDate = date.toISOString().slice(0, 10)
-    setEndDate(formattedDate)
-  }, [count])
+    setDate(formattedDate)
+  }, [counter])
 
   useEffect(() => {
-    if (inView) setCount(prev => (prev += 1))
-  }, [inView])
-
-  useEffect(() => {
-    fetchAsteroidList(startDate, endDate)
-      .then(res => setDataFromServer(res.data))
+    fetchAsteroidList(date, date)
+      .then(res => {
+        setDataFromServer(res.data)
+      })
       .catch(error => {
         if (error.response) {
           console.log(error.response.data)
@@ -47,7 +58,7 @@ export const HomePage = () => {
         }
       })
       .finally()
-  }, [startDate, endDate, setDataFromServer])
+  }, [date, setDataFromServer])
 
   useEffect(() => {
     if (dataFromServer) {
@@ -61,7 +72,8 @@ export const HomePage = () => {
           ? 1
           : -1
       )
-      setAsteroidData(sortedArray)
+
+      setAsteroidData(prevArr => [...prevArr, ...sortedArray])
     }
   }, [dataFromServer, setAsteroidData])
 
@@ -73,7 +85,6 @@ export const HomePage = () => {
         <h1 className={s.title}>Ближайшие подлёты астероидов</h1>
         <OptionDistance />
         <AsteroidsList asteroids={newFormattedAsteroidsData} />
-        <div ref={ref} className={s.label}></div>
       </div>
       <Basket itemCount={cartItemsId.length} />
     </>
